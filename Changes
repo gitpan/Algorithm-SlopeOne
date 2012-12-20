@@ -1,0 +1,11 @@
+Changelog for Algorithm-SlopeOne
+
+0.001 2012-12-20T15:28:51
+ [Stanislaw Pusep <creaktive@gmail.com>]
+ - input verification
+
+ - stripped pointless user ID handling
+
+ - INIT
+
+
