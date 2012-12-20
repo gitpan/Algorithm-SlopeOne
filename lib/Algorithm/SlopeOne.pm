@@ -9,18 +9,18 @@ use warnings qw(all);
 use Carp qw(confess);
 use Moo;
 
-our $VERSION = '0.001'; # VERSION
+our $VERSION = '0.002'; # VERSION
 
 
-has diffs => (is => q(rw), default => sub { {} });
-has freqs => (is => q(rw), default => sub { {} });
+has diffs => (is => q(rwp), default => sub { {} });
+has freqs => (is => q(rwp), default => sub { {} });
 
 
 sub clear {
     my ($self) = @_;
 
-    $self->diffs({});
-    $self->freqs({});
+    $self->_set_diffs({});
+    $self->_set_freqs({});
 
     return $self;
 }
@@ -88,7 +88,7 @@ Algorithm::SlopeOne - Slope One collaborative filtering for rated resources
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 

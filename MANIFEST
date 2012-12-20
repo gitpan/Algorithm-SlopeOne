@@ -7,10 +7,6 @@ Makefile.PL
 README
 dist.ini
 eg/movielens.pl
-eg/movies.dat
-eg/ratings.dat
-eg/u.data
-eg/u.item
 lib/Algorithm/SlopeOne.pm
 perlcritic.rc
 t/00-compile.t
