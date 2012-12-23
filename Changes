@@ -1,6 +1,13 @@
 Changelog for Algorithm-SlopeOne
 
-0.002 2012-12-20T15:42:56
+0.003 2012-12-23T14:03:09
+ [Stanislaw Pusep <creaktive@gmail.com>]
+ - renamed update() method to add()
+
+ - removed non-core deps
+
+
+v0.002 2012-12-20T15:41:42
  [Stanislaw Pusep <creaktive@gmail.com>]
  - better encapsulation for diffs/freqs matrices
 

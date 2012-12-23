@@ -7,26 +7,43 @@ use utf8;
 use warnings qw(all);
 
 use Carp qw(confess);
-use Moo;
 
-our $VERSION = '0.002'; # VERSION
+our $VERSION = '0.003'; # VERSION
 
 
-has diffs => (is => q(rwp), default => sub { {} });
-has freqs => (is => q(rwp), default => sub { {} });
+sub new {
+    my ($class) = @_;
+    return bless {
+        diffs   => {},
+        freqs   => {},
+    } => $class;
+}
+
+
+sub diffs {
+    my ($self) = @_;
+    return $self->{diffs};
+}
+
+sub freqs {
+    my ($self) = @_;
+    return $self->{freqs};
+}
 
 
 sub clear {
     my ($self) = @_;
 
-    $self->_set_diffs({});
-    $self->_set_freqs({});
+    for (qw(diffs freqs)) {
+        delete $self->{$_};
+        $self->{$_} = {};
+    }
 
     return $self;
 }
 
 
-sub update {
+sub add {
     my ($self, $userprefs) = @_;
 
     my $type = ref $userprefs;
@@ -88,7 +105,7 @@ Algorithm::SlopeOne - Slope One collaborative filtering for rated resources
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 
@@ -98,7 +115,7 @@ version 0.002
     use Data::Printer;
 
     my $s = Algorithm::SlopeOne->new;
-    $s->update([
+    $s->add([
         {
             squid       => 1.0,
             cuttlefish  => 0.5,
@@ -147,7 +164,7 @@ Ratings count matrix.
 
 Reset the instance.
 
-=head2 update($userprefs)
+=head2 add($userprefs)
 
 Update matrices with user preference data, accepts a HashRef or an ArrayRef of HashRefs:
 
@@ -163,6 +180,12 @@ Update matrices with user preference data, accepts a HashRef or an ArrayRef of H
 Recommend new items given known item ratings.
 
     $s->predict({ StarWars => 5, LOTR => 5, Prometheus => 1 });
+
+=for Pod::Coverage new
+
+=head1 TODO
+
+Implement I<Non-Weighted> and I<Bi-Polar Slope One> schemes.
 
 =head1 REFERENCES
 

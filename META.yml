@@ -17,7 +17,6 @@ meta-spec:
 name: Algorithm-SlopeOne
 requires:
   Carp: 0
-  Moo: 0
   perl: 5.008
   strict: 0
   utf8: 0
@@ -26,4 +25,4 @@ resources:
   bugtracker: https://github.com/creaktive/Algorithm-SlopeOne/issues
   homepage: https://github.com/creaktive/Algorithm-SlopeOne
   repository: git://github.com/creaktive/Algorithm-SlopeOne.git
-version: 0.002
+version: 0.003
