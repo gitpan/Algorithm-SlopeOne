@@ -1,16 +1,19 @@
 NAME
+
     Algorithm::SlopeOne - Slope One collaborative filtering for rated
     resources
 
 VERSION
-    version 0.003
+
+    version 0.004
 
 SYNOPSIS
+
         #!/usr/bin/env perl
         use common::sense;
         use Algorithm::SlopeOne;
         use Data::Printer;
-
+    
         my $s = Algorithm::SlopeOne->new;
         $s->add([
             {
@@ -33,7 +36,7 @@ SYNOPSIS
             },
         ]);
         p $s->predict({ squid => 0.4 });
-
+    
         # Output:
         # \ {
         #     cuttlefish   0.25,
@@ -42,21 +45,28 @@ SYNOPSIS
         # }
 
 DESCRIPTION
-    Perl implementation of the *Weighted Slope One* rating-based
+
+    Perl implementation of the Weighted Slope One rating-based
     collaborative filtering scheme.
 
 ATTRIBUTES
-  diffs
+
+ diffs
+
     Differential ratings matrix.
 
-  freqs
+ freqs
+
     Ratings count matrix.
 
 METHODS
-  clear
+
+ clear
+
     Reset the instance.
 
-  add($userprefs)
+ add($userprefs)
+
     Update matrices with user preference data, accepts a HashRef or an
     ArrayRef of HashRefs:
 
@@ -67,40 +77,46 @@ METHODS
             { XMen => 5, DarkKnight => 5, SpiderMan => 3 },
         ]);
 
-  predict($userprefs)
+ predict($userprefs)
+
     Recommend new items given known item ratings.
 
         $s->predict({ StarWars => 5, LOTR => 5, Prometheus => 1 });
 
 TODO
-    Implement *Non-Weighted* and *Bi-Polar Slope One* schemes.
+
+    Implement Non-Weighted and Bi-Polar Slope One schemes.
 
 REFERENCES
-    *   Slope One <https://en.wikipedia.org/wiki/Slope_One> - Wikipedia
-        article
 
-    *   Slope One Predictors for Online Rating-Based Collaborative Filtering
-        <http://lemire.me/fr/abstracts/SDM2005.html> - original paper
+      * Slope One <https://en.wikipedia.org/wiki/Slope_One> - Wikipedia
+      article
 
-    *   Collaborative filtering made easy
-        <http://www.serpentine.com/blog/2006/12/12/collaborative-filtering-m
-        ade-easy/> - Python implementation by Bryan O'Sullivan (primary
-        reference, test code)
+      * Slope One Predictors for Online Rating-Based Collaborative
+      Filtering <http://lemire.me/fr/abstracts/SDM2005.html> - original
+      paper
 
-    *   github.com/ashleyw/Slope-One <https://github.com/ashleyw/Slope-One>
-        - Ruby port of the above by Ashley Williams (used to borrow test
-        code)
+      * Collaborative filtering made easy
+      <http://www.serpentine.com/blog/2006/12/12/collaborative-filtering-ma
+      de-easy/> - Python implementation by Bryan O'Sullivan (primary
+      reference, test code)
 
-    *   Programming Collective Intelligence book
-        <http://shop.oreilly.com/product/9780596529321.do> by Toby Segaran
+      * github.com/ashleyw/Slope-One <https://github.com/ashleyw/Slope-One>
+      - Ruby port of the above by Ashley Williams (used to borrow test
+      code)
 
-    *   Data Sets by GroupLens Research <http://www.grouplens.org/node/12>
+      * Programming Collective Intelligence book
+      <http://shop.oreilly.com/product/9780596529321.do> by Toby Segaran
+
+      * Data Sets by GroupLens Research <http://www.grouplens.org/node/12>
 
 AUTHOR
+
     Stanislaw Pusep <stas@sysd.org>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2012 by Stanislaw Pusep.
+
+    This software is copyright (c) 2014 by Stanislaw Pusep.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
